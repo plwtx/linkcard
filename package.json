@@ -1,5 +1,5 @@
 {
-  "name": "linkcard",
+  "name": ";linkcard",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/open-sans": "^5.2.7",
     "@tailwindcss/vite": "^4.3.0",
     "@toolwind/corner-shape": "^0.0.8-3",
     "class-variance-authority": "^0.7.1",
