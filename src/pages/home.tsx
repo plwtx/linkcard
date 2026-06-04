@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       {/* Link page where the card will be  */}
-      <div className="w-full bg-zinc-900 h-dvh flex justify-center items-center flex-col">
+      <div className="flex h-dvh w-full flex-col items-center justify-center bg-zinc-400/45">
         <Card />
       </div>
     </>
