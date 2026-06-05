@@ -2,6 +2,7 @@ import { QrCode } from "lucide-react";
 import LINKS from "@/assets/json/testlinks.json";
 import { LINK_IMAGES } from "@/assets/types/linkImages";
 import type { Link } from "@/assets/types/links";
+import FrontBG from "@/assets/private/front1.png";
 
 const links = LINKS as Link[];
 
@@ -9,11 +10,14 @@ export default function CardFront() {
   return (
     <>
       {/* Profile card: */}
-      <div className="relative flex h-123.75 w-87.5 flex-col items-center justify-between rounded-4xl bg-zinc-100 py-6 shadow-md shadow-zinc-900">
+      <div
+        style={{ backgroundImage: `url(${FrontBG})` }}
+        className="text-blax relative flex h-123.75 w-87.5 flex-col items-center justify-between rounded-4xl bg-zinc-100 bg-cover bg-center py-6 shadow-md shadow-zinc-900"
+      >
         {/* Button for QR code */}
-        <QrCode size={32} className="outline-blax" />
+        <QrCode size={32} className="outline-blax z-20" />
         {/* Profile picture & Username*/}
-        <section className="flex w-full flex-col items-center justify-center gap-1">
+        <section className="z-20 flex w-full flex-col items-center justify-center gap-1">
           {/* Profile picture */}
           <div className="bg-blax h-35 w-35 rounded-full" />
           {/* Username */}
@@ -22,7 +26,7 @@ export default function CardFront() {
           </h1>
         </section>
         {/* Grid */}
-        <section className="flex h-fit w-full items-center justify-center pt-3">
+        <section className="z-20 flex h-fit w-full items-center justify-center pt-3">
           {/* Links */}
           <section className="grid grid-flow-row grid-cols-4 gap-4">
             {/* Instagram */}
@@ -30,7 +34,7 @@ export default function CardFront() {
               <a href={link.url} key={link.id} className="space-y-1">
                 <div className="bg-blax corner-squircle size-16 cursor-pointer overflow-clip rounded-full shadow-sm shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
                   <img
-                    className="scale-103"
+                    className="h-full w-full scale-103"
                     src={LINK_IMAGES[link.icon]}
                     alt={link.name}
                   />
@@ -40,6 +44,8 @@ export default function CardFront() {
             ))}
           </section>
         </section>
+        {/* BG image */}
+        {/* <img className="absolute z-0 h-full w-full" src={FrontBG} alt="" /> */}
       </div>
     </>
   );
