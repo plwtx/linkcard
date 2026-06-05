@@ -2,7 +2,7 @@ import { QrCode } from "lucide-react";
 import LINKS from "@/assets/json/testlinks.json";
 import { LINK_IMAGES } from "@/assets/types/linkImages";
 import type { Link } from "@/assets/types/links";
-import FrontBG from "@/assets/private/front2.png";
+import FrontBG from "@/assets/private/front3.png";
 import pfp from "@/assets/private/pfp.png";
 
 const links = LINKS as Link[];
@@ -13,7 +13,7 @@ export default function CardFront() {
       {/* Profile card: */}
       <div
         style={{ backgroundImage: `url(${FrontBG})` }}
-        className="relative flex h-123.75 w-87.5 flex-col items-center justify-between rounded-4xl bg-zinc-100 bg-cover bg-center py-6 text-white shadow-md shadow-zinc-900 2xl:scale-115"
+        className="absolute inset-0 flex flex-col items-center justify-between rounded-4xl bg-zinc-100 bg-cover bg-center py-6 text-white shadow-md shadow-zinc-900 backface-hidden"
       >
         {/* Button for QR code */}
         <QrCode size={32} className="outline-blax z-20" />
