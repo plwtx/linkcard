@@ -1,12 +1,9 @@
 import { QrCode } from "lucide-react";
 import LINKS from "@/assets/json/testlinks.json";
-export type link = {
-  id: number;
-  name: string;
-  url: string;
-};
+import { LINK_IMAGES } from "@/assets/types/linkImages";
+import type { Link } from "@/assets/types/links";
 
-const links = LINKS as link[];
+const links = LINKS as Link[];
 
 export default function CardFront() {
   return (
@@ -31,7 +28,13 @@ export default function CardFront() {
             {/* Instagram */}
             {links.map((link) => (
               <a href={link.url} key={link.id} className="space-y-1">
-                <div className="bg-blax corner-squircle size-16 cursor-pointer rounded-full shadow-sm shadow-black transition-all duration-300 ease-in-out hover:scale-110" />
+                <div className="bg-blax corner-squircle size-16 cursor-pointer overflow-clip rounded-full shadow-sm shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
+                  <img
+                    className="scale-103"
+                    src={LINK_IMAGES[link.icon]}
+                    alt={link.name}
+                  />
+                </div>
                 <h3 className="font-inter text-center text-xs">{link.name}</h3>
               </a>
             ))}
