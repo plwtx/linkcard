@@ -61,7 +61,7 @@ export default function Card() {
 
   return (
     <div
-      className="xs:w-auto w-full 2xl:scale-115"
+      className="xs:w-auto z-30 w-full 2xl:scale-115"
       style={{ perspective: "1200px" }}
     >
       <motion.div
