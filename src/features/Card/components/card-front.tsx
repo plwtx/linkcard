@@ -13,16 +13,19 @@ export default function CardFront({ isActive }: { isActive: boolean }) {
       {/* Profile card: */}
       <div
         style={{ backgroundImage: `url(${FrontBG})` }}
-        className={`absolute inset-0 flex flex-col items-center justify-between rounded-4xl border border-zinc-400 bg-zinc-100 bg-cover bg-center py-6 text-white shadow-md shadow-zinc-900 backface-hidden ${isActive ? "" : "pointer-events-none"}`}
+        className={`absolute inset-0 flex flex-col items-center justify-between rounded-4xl border border-zinc-400 bg-zinc-100 bg-cover bg-center px-3 py-6 text-white shadow-md shadow-zinc-900 backface-hidden ${isActive ? "" : "pointer-events-none"}`}
       >
         {/* Button for QR code */}
-        <QrCode size={32} className="outline-blax z-20" />
+        <QrCode
+          size={32}
+          className="outline-blax z-20 scale-90 rotate-45 cursor-pointer rounded-md border border-zinc-300 transition-all duration-300 ease-in hover:scale-125 hover:rotate-0"
+        />
         {/* Profile picture & Username*/}
         <section className="z-20 flex w-full flex-col items-center justify-center gap-1">
           {/* Profile picture */}
           <div
             style={{ backgroundImage: `url(${pfp})` }}
-            className="bg-blax h-35 w-35 rounded-full bg-cover bg-center shadow-md shadow-black"
+            className="bg-blax shadow-blax h-35 w-35 rounded-full border border-zinc-400 bg-cover bg-center shadow-md"
           />
           {/* Username */}
           <h1 className="font-inter font-medium">
