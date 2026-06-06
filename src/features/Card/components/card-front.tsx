@@ -7,13 +7,13 @@ import pfp from "@/assets/private/pfp.png";
 
 const links = LINKS as Link[];
 
-export default function CardFront() {
+export default function CardFront({ isActive }: { isActive: boolean }) {
   return (
     <>
       {/* Profile card: */}
       <div
         style={{ backgroundImage: `url(${FrontBG})` }}
-        className="absolute inset-0 flex flex-col items-center justify-between rounded-4xl bg-zinc-100 bg-cover bg-center py-6 text-white shadow-md shadow-zinc-900 backface-hidden"
+        className={`absolute inset-0 flex flex-col items-center justify-between rounded-4xl border border-zinc-400 bg-zinc-100 bg-cover bg-center py-6 text-white shadow-md shadow-zinc-900 backface-hidden ${isActive ? "" : "pointer-events-none"}`}
       >
         {/* Button for QR code */}
         <QrCode size={32} className="outline-blax z-20" />
@@ -32,13 +32,17 @@ export default function CardFront() {
         {/* Grid */}
         <section className="z-20 flex h-fit w-full items-center justify-center pt-3">
           {/* Links */}
-          <section className="grid grid-flow-row grid-cols-4 gap-4">
+          <section className="3xs:gap-4 2xs:grid-cols-4 grid grid-flow-row grid-cols-3 gap-3">
             {/* Instagram */}
             {links.map((link) => (
-              <a href={link.url} key={link.id} className="space-y-1">
-                <div className="bg-blax corner-squircle size-16 cursor-pointer overflow-clip rounded-full shadow-sm shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
+              <a
+                href={link.url}
+                key={link.id}
+                className="flex flex-col items-center justify-center space-y-1"
+              >
+                <div className="bg-blax corner-squircle 3xs:size-16 cursor-pointer overflow-clip rounded-full shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
                   <img
-                    className="h-full w-full scale-103"
+                    className="pointer-events-none h-full w-full scale-103 touch-none select-none"
                     src={LINK_IMAGES[link.icon]}
                     alt={link.name}
                   />

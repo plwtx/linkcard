@@ -1,13 +1,20 @@
 import { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import CardFront from "./components/card-front";
 import CardBack from "./components/card-back";
 
-const TILT_MAX = 15;
+const TILT_MAX = 9;
 const FLIP_THRESHOLD = 90;
 
 export default function Card() {
   const [flipped, setFlipped] = useState(false);
+  const [frontActive, setFrontActive] = useState(true);
   const pointerStartX = useRef(0);
 
   const tiltX = useMotionValue(0);
@@ -18,8 +25,11 @@ export default function Card() {
   const flipBase = useMotionValue(0);
   const springFlip = useSpring(flipBase, { stiffness: 200, damping: 25 });
 
-  // Combined rotateY: flip angle + tilt offset
   const rotateY = useTransform(() => springFlip.get() + springTiltY.get());
+
+  useMotionValueEvent(springFlip, "change", (angle) => {
+    setFrontActive(Math.abs(angle) < 1);
+  });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -36,12 +46,12 @@ export default function Card() {
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     pointerStartX.current = e.clientX;
-    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest("a")) return;
+
     const delta = Math.abs(e.clientX - pointerStartX.current);
-    // Flip on tap (small movement) or horizontal swipe past threshold
     if (delta < 10 || delta >= FLIP_THRESHOLD) {
       const next = !flipped;
       setFlipped(next);
@@ -50,16 +60,19 @@ export default function Card() {
   };
 
   return (
-    <div className="2xl:scale-115" style={{ perspective: "1200px" }}>
+    <div
+      className="xs:w-auto w-full 2xl:scale-115"
+      style={{ perspective: "1200px" }}
+    >
       <motion.div
-        className="relative h-123.75 w-87.5 cursor-pointer transform-3d"
+        className="xs:w-93 shadow-blax/45 relative h-130 w-full rounded-4xl shadow-xl transform-3d"
         style={{ rotateX: springTiltX, rotateY }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        <CardFront />
+        <CardFront isActive={frontActive} />
         <CardBack />
       </motion.div>
     </div>

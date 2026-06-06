@@ -8,7 +8,7 @@ export default function Home() {
       {/* Link page where the card will be  */}
       <div
         style={{ backgroundImage: `url(${tileX})` }}
-        className="flex h-dvh w-full flex-col items-center justify-center bg-repeat"
+        className="2xs:px-6 relative flex h-dvh w-full flex-col items-center justify-center bg-repeat px-3"
       >
         <Card />
       </div>
