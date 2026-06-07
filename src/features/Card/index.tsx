@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -8,28 +8,52 @@ import {
 } from "motion/react";
 import CardFront from "./components/card-front";
 import CardBack from "./components/card-back";
+import CardQr from "./components/card-qr";
 
 const TILT_MAX = 9;
 const FLIP_THRESHOLD = 90;
 
+const FACE_HIDDEN_ANGLE = 90;
+const FLIP_SPRING = { stiffness: 90, damping: 18 };
+const QR_SPIN_SPRING = { stiffness: 55, damping: 16 };
+
 export default function Card() {
   const [flipped, setFlipped] = useState(false);
-  const [frontActive, setFrontActive] = useState(true);
+  const [frontFacing, setFrontFacing] = useState(true);
+  const [showQr, setShowQr] = useState(false);
   const pointerStartX = useRef(0);
+  const pendingQr = useRef<boolean | null>(null);
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
   const springTiltX = useSpring(tiltX, { stiffness: 300, damping: 30 });
   const springTiltY = useSpring(tiltY, { stiffness: 300, damping: 30 });
 
+  // Drag flip toggles 0 (front) / 180 (back); QR spin adds full 360 revolutions.
   const flipBase = useMotionValue(0);
-  const springFlip = useSpring(flipBase, { stiffness: 200, damping: 25 });
+  const qrSpin = useMotionValue(0);
+  const springFlip = useSpring(flipBase, FLIP_SPRING);
+  const springQrSpin = useSpring(qrSpin, QR_SPIN_SPRING);
 
-  const rotateY = useTransform(() => springFlip.get() + springTiltY.get());
+  const flipAngle = useTransform(() => springFlip.get() + springQrSpin.get());
+  const rotateY = useTransform(() => flipAngle.get() + springTiltY.get());
 
-  useMotionValueEvent(springFlip, "change", (angle) => {
-    setFrontActive(Math.abs(angle) < 1);
+  useMotionValueEvent(flipAngle, "change", (angle) => {
+    const norm = ((angle % 360) + 360) % 360;
+    setFrontFacing(norm < FACE_HIDDEN_ANGLE || norm > 360 - FACE_HIDDEN_ANGLE);
   });
+
+  useEffect(() => {
+    if (!frontFacing && pendingQr.current !== null) {
+      setShowQr(pendingQr.current);
+      pendingQr.current = null;
+    }
+  }, [frontFacing]);
+
+  const handleQrFlip = () => {
+    pendingQr.current = !showQr;
+    qrSpin.set(qrSpin.get() + 360);
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -49,14 +73,20 @@ export default function Card() {
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if ((e.target as HTMLElement).closest("a")) return;
+    const target = e.target as HTMLElement;
+    if (target.closest("a") || target.closest("[data-no-flip]")) return;
 
     const delta = Math.abs(e.clientX - pointerStartX.current);
-    if (delta < 10 || delta >= FLIP_THRESHOLD) {
-      const next = !flipped;
-      setFlipped(next);
-      flipBase.set(next ? 180 : 0);
+    if (delta >= 10 && delta < FLIP_THRESHOLD) return;
+
+    if (showQr) {
+      handleQrFlip();
+      return;
     }
+
+    const next = !flipped;
+    setFlipped(next);
+    flipBase.set(next ? 180 : 0);
   };
 
   return (
@@ -72,8 +102,9 @@ export default function Card() {
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        <CardFront isActive={frontActive} />
+        <CardFront isActive={frontFacing && !showQr} onQrPress={handleQrFlip} />
         <CardBack />
+        {showQr && <CardQr isActive={frontFacing} />}
       </motion.div>
     </div>
   );

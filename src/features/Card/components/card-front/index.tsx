@@ -9,7 +9,13 @@ import { useMinLoading } from "./useMinLoading";
 
 const links = LINKS as Link[];
 
-export default function CardFront({ isActive }: { isActive: boolean }) {
+export default function CardFront({
+  isActive,
+  onQrPress,
+}: {
+  isActive: boolean;
+  onQrPress: () => void;
+}) {
   const loading = useMinLoading(1000);
 
   return (
@@ -21,7 +27,7 @@ export default function CardFront({ isActive }: { isActive: boolean }) {
         <CardFrontSkeleton tileCount={links.length} />
       ) : (
         <>
-          <QrButton />
+          <QrButton onPress={onQrPress} />
           <Profile username="bygretya" />
           <LinksGrid links={links} />
         </>
