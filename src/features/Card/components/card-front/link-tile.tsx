@@ -14,7 +14,9 @@ export function LinkTile({ link }: { link: Link }) {
           alt={link.name}
         />
       </div>
-      <h3 className="font-inter text-center text-xs font-medium">{link.name}</h3>
+      <h3 className="font-inter text-center text-xs font-medium">
+        {link.name}
+      </h3>
     </a>
   );
 }

@@ -15,7 +15,7 @@ export default function LeftArt({ seed }: Props) {
         animate={animate}
         transition={transition}
         style={style}
-        className="pointer-events-none h-auto w-auto touch-none self-start select-none md:scale-125"
+        className="pointer-events-none h-auto w-auto touch-none self-start select-none"
         src={ART}
         alt="Left decorative drawing."
       />
