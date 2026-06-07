@@ -1,10 +1,21 @@
-import ART from "@/assets/private/3.png";
+import { motion } from "motion/react";
+import ART from "@/assets/private/ART1.png";
+import { useHangingAnimation } from "@/features/Animations/useHangingAnim";
 
-export default function LeftArt() {
+interface Props {
+  seed: number;
+}
+
+export default function LeftArt({ seed }: Props) {
+  const { animate, transition, style } = useHangingAnimation(seed);
+
   return (
-    <div className="z-0 flex h-dvh items-center justify-center self-start">
-      <img
-        className="pointer-events-none h-full w-auto touch-none select-none"
+    <div className="z-0 flex h-dvh -translate-y-12 items-center justify-center">
+      <motion.img
+        animate={animate}
+        transition={transition}
+        style={style}
+        className="pointer-events-none h-auto w-auto touch-none self-start select-none md:scale-125"
         src={ART}
         alt="Left decorative drawing."
       />

@@ -1,14 +1,13 @@
-import LeftDrawing from "./components/left.tsx";
-import RightDrawing from "./components/right.tsx";
-
+import LeftArt from "./components/left.tsx";
+import RightArt from "./components/right.tsx";
 export default function Arts() {
   return (
-    <div className="relative z-0 flex h-dvh w-full items-center justify-between p-6">
+    <div className="relative z-10 flex h-dvh w-full justify-between p-1 md:px-16 md:py-12">
       {/* Left  */}
-      <LeftDrawing />
+      <LeftArt seed={99} />
       {/* Right */}
       <section>
-        <RightDrawing />
+        <RightArt seed={91} />
       </section>
     </div>
   );
