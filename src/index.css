@@ -17,4 +17,9 @@
   /* Fonts */
   --font-inter: "Inter", sans-serif;
   --font-IBM-mono: "IBM Plex Mono", monospace;
+
+  /* Custom breakpoints */
+  --breakpoint-3xs: 20rem; /* 320px */
+  --breakpoint-2xs: 23.4375rem; /* 375px */
+  --breakpoint-xs: 25.75rem; /* 412px */
 }
