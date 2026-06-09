@@ -1,14 +1,14 @@
 import { useRef } from "react";
-import { LINK_IMAGES } from "@/assets/types/linkImages";
-import type { Link } from "@/assets/types/links";
+import { Link as LinkIcon } from "lucide-react";
+import type { ResolvedLink } from "@/assets/types/config";
 
 export function LinkTile({
   link,
   onLaunch,
   disabled,
 }: {
-  link: Link;
-  onLaunch: (link: Link, rect: DOMRect) => void;
+  link: ResolvedLink;
+  onLaunch: (link: ResolvedLink, rect: DOMRect) => void;
   disabled: boolean;
 }) {
   const iconRef = useRef<HTMLDivElement>(null);
@@ -29,16 +29,20 @@ export function LinkTile({
     >
       <div
         ref={iconRef}
-        className="bg-blax 3xs:size-16 cursor-pointer overflow-clip rounded-[18px] shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
+        className="bg-blax 3xs:size-16 flex cursor-pointer items-center justify-center overflow-clip rounded-[18px] shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
       >
-        <img
-          className="pointer-events-none h-full w-full scale-103 touch-none select-none"
-          src={LINK_IMAGES[link.icon]}
-          alt={link.name}
-        />
+        {link.iconSrc ? (
+          <img
+            className="pointer-events-none h-full w-full scale-103 touch-none select-none"
+            src={link.iconSrc}
+            alt={link.label}
+          />
+        ) : (
+          <LinkIcon className="size-7 text-white" aria-hidden />
+        )}
       </div>
       <h3 className="font-inter text-center text-xs font-medium">
-        {link.name}
+        {link.label}
       </h3>
     </a>
   );

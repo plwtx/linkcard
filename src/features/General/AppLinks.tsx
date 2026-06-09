@@ -1,3 +1,4 @@
+import { config } from "@/config";
 import BlurBlob from "./BlurBlob";
 
 export default function AppLinks() {
@@ -18,7 +19,7 @@ export default function AppLinks() {
         </a>
       </section>
       {/* Background Gradient */}
-      <BlurBlob />
+      <BlurBlob color={config.accentColor} />
     </>
   );
 }

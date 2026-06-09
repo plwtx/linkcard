@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
-import LINKS from "@/assets/json/testlinks.json";
-import type { Link } from "@/assets/types/links";
+import { config } from "@/config";
+import { resolveLinkIcon } from "@/assets/types/linkImages";
+import type { ResolvedLink } from "@/assets/types/config";
 import FrontBG from "@/assets/private/front3.png";
 import { QrButton } from "./qr-button";
 import { Profile } from "./profile";
@@ -8,7 +9,11 @@ import { LinksGrid } from "./links-grid";
 import { CardFrontSkeleton } from "./skeleton";
 import { useMinLoading } from "./useMinLoading";
 
-const links = LINKS as Link[];
+const links: ResolvedLink[] = config.links.map((link) => ({
+  label: link.label,
+  url: link.url,
+  iconSrc: resolveLinkIcon(link.icon, config.linkStyle),
+}));
 
 const LAYER =
   "absolute inset-0 flex flex-col items-center justify-between px-3 py-6";
@@ -47,7 +52,10 @@ export default function CardFront({
             transition={FADE}
           >
             <QrButton onPress={onQrPress} />
-            <Profile username="bygretya" />
+            <Profile
+              username={config.username}
+              description={config.description}
+            />
             <LinksGrid links={links} />
           </motion.div>
         )}

@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 
 interface BlurBlobProps {
   className?: string;
+  color?: string;
   duration?: number;
 }
 
@@ -16,20 +17,27 @@ const SHAPES = [
 ];
 
 export default function BlurBlob({
-  className = "-top-50 -right-50 h-100 w-100 bg-violet-900",
+  className = "-top-50 -right-50 h-100 w-100",
+  color,
   duration = 6,
 }: BlurBlobProps) {
   const reduceMotion = useReducedMotion();
 
   if (reduceMotion) {
-    return <div aria-hidden className={`${BASE} rounded-full ${className}`} />;
+    return (
+      <div
+        aria-hidden
+        className={`${BASE} rounded-full ${className}`}
+        style={{ backgroundColor: color }}
+      />
+    );
   }
 
   return (
     <motion.div
       aria-hidden
       className={`${BASE} ${className}`}
-      style={{ willChange: "transform" }}
+      style={{ willChange: "transform", backgroundColor: color }}
       initial={{ borderRadius: SHAPES[0] }}
       animate={{
         borderRadius: SHAPES,

@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { motion } from "motion/react";
-import { LINK_IMAGES } from "@/assets/types/linkImages";
+import { Link as LinkIcon } from "lucide-react";
 import { LAUNCH_DURATION_MS, type LaunchState } from "./useLinkLaunch";
 
 const DURATION = LAUNCH_DURATION_MS / 600;
@@ -43,11 +43,17 @@ export function LinkLaunchOverlay({ launch }: { launch: LaunchState }) {
           times: [0, 0.2, 1],
         }}
       >
-        <img
-          className="h-full w-full scale-103 select-none"
-          src={LINK_IMAGES[link.icon]}
-          alt={link.name}
-        />
+        {link.iconSrc ? (
+          <img
+            className="h-full w-full scale-103 select-none"
+            src={link.iconSrc}
+            alt={link.label}
+          />
+        ) : (
+          <span className="flex h-full w-full items-center justify-center">
+            <LinkIcon className="h-1/2 w-1/2 text-white" aria-hidden />
+          </span>
+        )}
         <motion.div
           className="absolute inset-0 bg-black"
           initial={{ opacity: 0 }}

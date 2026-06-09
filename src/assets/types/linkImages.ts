@@ -13,3 +13,11 @@ export const LINK_IMAGES: Record<string, string> = {
   "vgen:default": vgen,
   "youtube:default": youtube,
 };
+
+export function resolveLinkIcon(
+  icon: string | undefined,
+  style: string,
+): string | undefined {
+  if (!icon) return undefined;
+  return LINK_IMAGES[`${icon}:${style}`];
+}

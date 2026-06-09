@@ -2,7 +2,8 @@ import { motion, type Variants } from "motion/react";
 import { QRCode } from "react-qr-code";
 import BackBG from "@/assets/private/front2.png";
 
-const QR_VALUE = "http://0w0.lt/";
+// QR: linkcard page itself. (SELF SHARE)
+const QR_VALUE = typeof window !== "undefined" ? window.location.href : "";
 
 // Animation configs:
 const DECO_DURATION = 1.5;

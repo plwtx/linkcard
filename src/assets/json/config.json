@@ -1,0 +1,42 @@
+{
+  "username": "bygretya",
+  "description": "Artist & illustrator | commissions open.",
+  "accentColor": "#4c1d95",
+  "linkStyle": "default",
+  "website": {
+    "label": "0w0.lt",
+    "url": "http://0w0.lt/"
+  },
+  "links": [
+    {
+      "label": "Instagram",
+      "icon": "instagram",
+      "url": "https://www.instagram.com/bygretya"
+    },
+    {
+      "label": "TikTok",
+      "icon": "tiktok",
+      "url": "https://www.tiktok.com/@bygretya"
+    },
+    {
+      "label": "YouTube",
+      "icon": "youtube",
+      "url": "https://youtube.com/channel/UCPrymZrgurBtWCkQXj47mXQ"
+    },
+    {
+      "label": "Bluesky",
+      "icon": "bluesky",
+      "url": "https://bsky.app/profile/bygretya.bsky.social"
+    },
+    {
+      "label": "Vgen",
+      "icon": "vgen",
+      "url": "https://vgen.co/bygretya"
+    },
+    {
+      "label": "Ko-Fi",
+      "icon": "ko-fi",
+      "url": "https://ko-fi.com/bygretya/commissions"
+    }
+  ]
+}
