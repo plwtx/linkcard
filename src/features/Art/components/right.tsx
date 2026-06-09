@@ -1,24 +1,19 @@
-import { motion } from "motion/react";
-import ART from "@/assets/private/ART2.png";
-import { useHangingAnimation } from "@/features/Animations/useHangingAnim";
+import Drawing from "@/assets/private/ART2.png";
+import Art from "./art";
 
 interface Props {
   seed: number;
 }
 
-export default function LeftArt({ seed }: Props) {
-  const { animate, transition, style } = useHangingAnimation(seed);
-
+export default function RightArt({ seed }: Props) {
   return (
-    <div className="z-0 flex h-dvh translate-y-12 items-center justify-center md:-translate-y-9">
-      <motion.img
-        animate={animate}
-        transition={transition}
-        style={style}
-        className="pointer-events-none h-auto w-auto touch-none self-end select-none"
-        src={ART}
-        alt="Left decorative drawing."
-      />
-    </div>
+    <Art
+      src={Drawing}
+      alt="Right decorative drawing."
+      seed={seed}
+      from="bottom"
+      containerClassName="z-0 flex h-dvh translate-y-12 items-center justify-center md:-translate-y-9"
+      imgClassName="pointer-events-none h-auto w-auto touch-none select-none"
+    />
   );
 }

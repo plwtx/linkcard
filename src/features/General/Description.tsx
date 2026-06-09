@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import BlurBlob from "./BlurBlob";
 
 export default function Description() {
   return (
@@ -12,7 +13,7 @@ export default function Description() {
           !
         </p>
         <ChevronDown className="xs:visible xs:relative invisible absolute z-40 size-3 animate-bounce" />
-        <div className="absolute z-30 h-100 w-120 translate-y-16 rounded-full bg-violet-900 mix-blend-multiply blur-3xl" />
+        <BlurBlob className="mt-16 h-100 w-120 bg-violet-900" />
       </section>
     </>
   );
