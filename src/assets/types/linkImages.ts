@@ -1,15 +1,15 @@
-import instagram from "@/assets/jpeg/instagram.jpg";
-import bluesky from "@/assets/jpeg/bluesky.jpg";
-import kofi from "@/assets/jpeg/ko-fi.jpg";
-import tiktok from "@/assets/jpeg/tiktok.jpg";
-import vgen from "@/assets/jpeg/vgen.jpg";
-import youtube from "@/assets/jpeg/youtube.jpg";
+import instagram from "@/assets/linkIcons/default/instagram.jpg";
+import bluesky from "@/assets/linkIcons/default/bluesky.jpg";
+import kofi from "@/assets/linkIcons/default/ko-fi.jpg";
+import tiktok from "@/assets/linkIcons/default/tiktok.jpg";
+import vgen from "@/assets/linkIcons/default/vgen.jpg";
+import youtube from "@/assets/linkIcons/default/youtube.jpg";
 
 export const LINK_IMAGES: Record<string, string> = {
-  "instagram.jpeg": instagram,
-  "bluesky.jpeg": bluesky,
-  "ko-fi.jpeg": kofi,
-  "tiktok.jpeg": tiktok,
-  "vgen.jpeg": vgen,
-  "youtube.jpeg": youtube,
+  "instagram:default": instagram,
+  "bluesky:default": bluesky,
+  "ko-fi:default": kofi,
+  "tiktok:default": tiktok,
+  "vgen:default": vgen,
+  "youtube:default": youtube,
 };
