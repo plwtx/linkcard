@@ -112,9 +112,30 @@ export default function CardQr({ isActive }: { isActive: boolean }) {
           className="h-auto w-full max-w-full"
         />
       </motion.div>
-      <p className="font-IBM-mono absolute top-3 z-30 font-light tracking-wide text-violet-100">
-        @bygretya
-      </p>
+      {/* Name tag */}
+      <motion.p
+        initial={{ y: -120, scale: 1, opacity: 0 }}
+        animate={
+          isActive
+            ? { y: 0, scale: 1, opacity: 1 }
+            : {
+                y: 360,
+                scale: 0,
+                opacity: 0,
+              }
+        }
+        transition={{
+          delay: QR_DELAY,
+          duration: QR_DURATION,
+          ease: "easeOut",
+          type: "spring",
+          stiffness: 115,
+          damping: 16,
+        }}
+        className="absolute top-3 z-30 font-sans text-sm tracking-wide text-white"
+      >
+        Scan the QR code to share !
+      </motion.p>
       {/* Gradient */}
       <div className="bg-blax absolute -bottom-64 left-1/2 z-0 h-100 w-100 -translate-x-1/2 rounded-full mix-blend-multiply blur-3xl" />
       {/* Circles */}
