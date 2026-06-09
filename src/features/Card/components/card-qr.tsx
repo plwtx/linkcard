@@ -100,7 +100,7 @@ export default function CardQr({ isActive }: { isActive: boolean }) {
           stiffness: 115,
           damping: 16,
         }}
-        className="bg-blax z-30 flex size-50 items-center justify-center rounded-br-3xl border border-white p-2"
+        className="z-30 flex size-50 items-center justify-center rounded-br-3xl bg-black p-2"
       >
         <QRCode
           value={QR_VALUE}
