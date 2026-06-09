@@ -29,7 +29,7 @@ export function LinkTile({
     >
       <div
         ref={iconRef}
-        className="bg-blax corner-squircle 3xs:size-16 cursor-pointer overflow-clip rounded-full shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
+        className="bg-blax 3xs:size-16 cursor-pointer overflow-clip rounded-[18px] shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
       >
         <img
           className="pointer-events-none h-full w-full scale-103 touch-none select-none"
