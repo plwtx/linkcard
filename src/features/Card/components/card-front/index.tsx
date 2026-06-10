@@ -1,5 +1,7 @@
-import LINKS from "@/assets/json/testlinks.json";
-import type { Link } from "@/assets/types/links";
+import { AnimatePresence, motion } from "motion/react";
+import { config } from "@/config";
+import { resolveLinkIcon } from "@/assets/types/linkImages";
+import type { ResolvedLink } from "@/assets/types/config";
 import FrontBG from "@/assets/private/front3.png";
 import { QrButton } from "./qr-button";
 import { Profile } from "./profile";
@@ -7,7 +9,15 @@ import { LinksGrid } from "./links-grid";
 import { CardFrontSkeleton } from "./skeleton";
 import { useMinLoading } from "./useMinLoading";
 
-const links = LINKS as Link[];
+const links: ResolvedLink[] = config.links.map((link) => ({
+  label: link.label,
+  url: link.url,
+  iconSrc: resolveLinkIcon(link.label, config.linkStyle),
+}));
+
+const LAYER =
+  "absolute inset-0 flex flex-col items-center justify-between px-3 py-6";
+const FADE = { duration: 0.5, ease: "easeInOut" as const };
 
 export default function CardFront({
   isActive,
@@ -21,17 +31,35 @@ export default function CardFront({
   return (
     <div
       style={{ backgroundImage: `url(${FrontBG})` }}
-      className={`absolute inset-0 flex flex-col items-center justify-between rounded-4xl border border-zinc-400 bg-zinc-100 bg-cover bg-center px-3 py-6 text-white shadow-md shadow-zinc-900 backface-hidden ${isActive ? "" : "pointer-events-none"}`}
+      className={`absolute inset-0 rounded-4xl border border-zinc-400 bg-zinc-100 bg-cover bg-center text-white shadow-md shadow-zinc-900 backface-hidden ${isActive ? "" : "pointer-events-none"}`}
     >
-      {loading ? (
-        <CardFrontSkeleton tileCount={links.length} />
-      ) : (
-        <>
-          <QrButton onPress={onQrPress} />
-          <Profile username="bygretya" />
-          <LinksGrid links={links} />
-        </>
-      )}
+      <AnimatePresence initial={false}>
+        {loading ? (
+          <motion.div
+            key="skeleton"
+            className={LAYER}
+            exit={{ opacity: 0 }}
+            transition={FADE}
+          >
+            <CardFrontSkeleton tileCount={links.length} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            className={LAYER}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={FADE}
+          >
+            <QrButton onPress={onQrPress} />
+            <Profile
+              username={config.username}
+              description={config.description}
+            />
+            <LinksGrid links={links} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

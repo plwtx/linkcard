@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import type { Link } from "@/assets/types/links";
+import type { ResolvedLink } from "@/assets/types/config";
 
 export const LAUNCH_DURATION_MS = 600;
 
 export type LaunchState = {
-  link: Link;
+  link: ResolvedLink;
   rect: DOMRect;
 };
 
@@ -12,7 +12,7 @@ export function useLinkLaunch() {
   const [launch, setLaunch] = useState<LaunchState | null>(null);
   const timer = useRef<number | null>(null);
 
-  const startLaunch = (link: Link, rect: DOMRect) => {
+  const startLaunch = (link: ResolvedLink, rect: DOMRect) => {
     if (timer.current !== null) return;
     setLaunch({ link, rect });
     timer.current = window.setTimeout(() => {

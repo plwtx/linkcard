@@ -9,6 +9,7 @@ import {
 import CardFront from "./components/card-front";
 import CardBack from "./components/card-back";
 import CardQr from "./components/card-qr";
+import { useCardIntro } from "./useCardIntro";
 
 const TILT_MAX = 9;
 const FLIP_THRESHOLD = 90;
@@ -29,13 +30,16 @@ export default function Card() {
   const springTiltX = useSpring(tiltX, { stiffness: 300, damping: 30 });
   const springTiltY = useSpring(tiltY, { stiffness: 300, damping: 30 });
 
-  // Drag flip toggles 0 (front) / 180 (back); QR spin adds full 360 revolutions.
   const flipBase = useMotionValue(0);
   const qrSpin = useMotionValue(0);
   const springFlip = useSpring(flipBase, FLIP_SPRING);
   const springQrSpin = useSpring(qrSpin, QR_SPIN_SPRING);
 
-  const flipAngle = useTransform(() => springFlip.get() + springQrSpin.get());
+  const { introFlip, entrance } = useCardIntro();
+
+  const flipAngle = useTransform(
+    () => springFlip.get() + springQrSpin.get() + introFlip.get(),
+  );
   const rotateY = useTransform(() => flipAngle.get() + springTiltY.get());
 
   useMotionValueEvent(flipAngle, "change", (angle) => {
@@ -90,22 +94,24 @@ export default function Card() {
   };
 
   return (
-    <div
-      className="xs:w-auto z-90 w-full 2xl:scale-115"
-      style={{ perspective: "1200px" }}
-    >
-      <motion.div
-        className="xs:w-93 shadow-blax/45 relative h-130 w-full rounded-4xl shadow-xl transform-3d"
-        style={{ rotateX: springTiltX, rotateY }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-      >
-        <CardFront isActive={frontFacing && !showQr} onQrPress={handleQrFlip} />
-        <CardBack />
-        {showQr && <CardQr isActive={frontFacing} />}
-      </motion.div>
-    </div>
+    <motion.div className="xs:w-auto z-90 w-full" {...entrance}>
+      <div className="2xl:scale-115" style={{ perspective: "1200px" }}>
+        <motion.div
+          className="xs:w-93 shadow-blax/45 relative h-130 w-full rounded-4xl shadow-xl transform-3d"
+          style={{ rotateX: springTiltX, rotateY }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+        >
+          <CardFront
+            isActive={frontFacing && !showQr}
+            onQrPress={handleQrFlip}
+          />
+          <CardBack />
+          {showQr && <CardQr isActive={frontFacing} />}
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }

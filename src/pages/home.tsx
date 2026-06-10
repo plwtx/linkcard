@@ -1,6 +1,7 @@
 import Card from "@/features/Card";
 import Art from "@/features/Art";
-import Description from "@/features/General/Description";
+import Footer from "@/features/General/Footer";
+import AppLinks from "@/features/General/AppLinks";
 import tileX from "@/assets/private/front4.png";
 
 export default function Home() {
@@ -9,10 +10,11 @@ export default function Home() {
       {/* Link page where the card will be  */}
       <div
         style={{ backgroundImage: `url(${tileX})` }}
-        className="2xs:px-6 relative flex h-dvh w-full flex-col items-center justify-center overflow-clip bg-repeat px-3"
+        className="2xs:px-6 selection:bg-accent relative flex h-dvh w-full flex-col items-center justify-center overflow-clip bg-repeat px-3 selection:text-white"
       >
         <Card />
-        <Description />
+        <Footer />
+        <AppLinks />
         <div className="absolute top-1/2 z-20 w-full -translate-y-1/2">
           <Art />
         </div>
