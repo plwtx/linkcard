@@ -1,4 +1,4 @@
-import BackBG from "@/assets/private/back2.png";
+import BackBG from "@/assets/images/card-back.webp";
 
 export default function CardBack() {
   return (

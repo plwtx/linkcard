@@ -1,6 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import { QRCode } from "react-qr-code";
-import BackBG from "@/assets/private/front2.png";
+import BackBG from "@/assets/images/card-qr.webp";
 
 // QR: linkcard page itself. (SELF SHARE)
 const QR_VALUE = typeof window !== "undefined" ? window.location.href : "";

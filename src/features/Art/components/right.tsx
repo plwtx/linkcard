@@ -1,4 +1,4 @@
-import Drawing from "@/assets/private/ART2.png";
+import Drawing from "@/assets/images/right-art.webp";
 import Art from "./art";
 
 interface Props {

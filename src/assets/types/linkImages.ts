@@ -1,9 +1,9 @@
-import instagram from "@/assets/icons/default/instagram.jpg";
-import bluesky from "@/assets/icons/default/bluesky.jpg";
-import kofi from "@/assets/icons/default/ko-fi.jpg";
-import tiktok from "@/assets/icons/default/tiktok.jpg";
-import vgen from "@/assets/icons/default/vgen.jpg";
-import youtube from "@/assets/icons/default/youtube.jpg";
+import instagram from "@/assets/icons/default/instagram.webp";
+import bluesky from "@/assets/icons/default/bluesky.webp";
+import kofi from "@/assets/icons/default/ko-fi.webp";
+import tiktok from "@/assets/icons/default/tiktok.webp";
+import vgen from "@/assets/icons/default/vgen.webp";
+import youtube from "@/assets/icons/default/youtube.webp";
 
 export const LINK_IMAGES: Record<string, string> = {
   "instagram:default": instagram,

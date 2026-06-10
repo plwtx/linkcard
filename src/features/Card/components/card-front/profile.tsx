@@ -1,4 +1,4 @@
-import pfp from "@/assets/private/pfp.png";
+import pfp from "@/assets/images/profile-picture.webp";
 
 export function Profile({
   username,

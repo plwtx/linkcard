@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { config } from "@/config";
 import { resolveLinkIcon } from "@/assets/types/linkImages";
 import type { ResolvedLink } from "@/assets/types/config";
-import FrontBG from "@/assets/private/front3.png";
+import FrontBG from "@/assets/images/card-front.webp";
 import { QrButton } from "./qr-button";
 import { Profile } from "./profile";
 import { LinksGrid } from "./links-grid";
