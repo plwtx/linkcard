@@ -12,7 +12,7 @@ import { useMinLoading } from "./useMinLoading";
 const links: ResolvedLink[] = config.links.map((link) => ({
   label: link.label,
   url: link.url,
-  iconSrc: resolveLinkIcon(link.icon, config.linkStyle),
+  iconSrc: resolveLinkIcon(link.label, config.linkStyle),
 }));
 
 const LAYER =

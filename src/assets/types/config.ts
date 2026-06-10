@@ -1,8 +1,6 @@
 export type ConfigLink = {
   label: string;
   url: string;
-
-  icon?: string;
 };
 
 export type WebsiteLink = {

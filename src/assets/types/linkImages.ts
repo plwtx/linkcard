@@ -1,9 +1,9 @@
-import instagram from "@/assets/linkIcons/default/instagram.jpg";
-import bluesky from "@/assets/linkIcons/default/bluesky.jpg";
-import kofi from "@/assets/linkIcons/default/ko-fi.jpg";
-import tiktok from "@/assets/linkIcons/default/tiktok.jpg";
-import vgen from "@/assets/linkIcons/default/vgen.jpg";
-import youtube from "@/assets/linkIcons/default/youtube.jpg";
+import instagram from "@/assets/icons/default/instagram.jpg";
+import bluesky from "@/assets/icons/default/bluesky.jpg";
+import kofi from "@/assets/icons/default/ko-fi.jpg";
+import tiktok from "@/assets/icons/default/tiktok.jpg";
+import vgen from "@/assets/icons/default/vgen.jpg";
+import youtube from "@/assets/icons/default/youtube.jpg";
 
 export const LINK_IMAGES: Record<string, string> = {
   "instagram:default": instagram,
@@ -15,9 +15,9 @@ export const LINK_IMAGES: Record<string, string> = {
 };
 
 export function resolveLinkIcon(
-  icon: string | undefined,
+  label: string | undefined,
   style: string,
 ): string | undefined {
-  if (!icon) return undefined;
-  return LINK_IMAGES[`${icon}:${style}`];
+  if (!label) return undefined;
+  return LINK_IMAGES[`${label.toLowerCase()}:${style}`];
 }

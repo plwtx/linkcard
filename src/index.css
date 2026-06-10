@@ -10,8 +10,6 @@
 @theme {
   /* Additional colors */
   --color-blax: #252525;
-
-  /* Accent colors */
   --color-brown-900: #1a1818;
 
   /* Fonts */
@@ -22,4 +20,9 @@
   --breakpoint-3xs: 20rem; /* 320px */
   --breakpoint-2xs: 23.4375rem; /* 375px */
   --breakpoint-xs: 25.75rem; /* 412px */
+}
+
+/* FIXED: Accent color with fallback color. */
+@theme inline {
+  --color-accent: var(--accent, #c4e24a);
 }
