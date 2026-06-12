@@ -4,6 +4,7 @@ import {
   useMotionValue,
   type AnimationPlaybackControls,
 } from "motion/react";
+import { haptics } from "@/lib/haptics";
 
 const FLIP_SPRING = { type: "spring" as const, stiffness: 90, damping: 18 };
 const HALF_TURN = 180;
@@ -28,6 +29,7 @@ export function useCardFlip(interceptTap?: (side: FlipSide) => boolean) {
   const suppressClick = useRef(false);
 
   const settleTo = (angle: number, velocity = 0) => {
+    if (angle !== restAngle.current) haptics.quick();
     restAngle.current = angle;
     animation.current?.stop();
     animation.current = animate(rotation, angle, { ...FLIP_SPRING, velocity });

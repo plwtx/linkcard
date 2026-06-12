@@ -11,6 +11,7 @@ import CardBack from "./components/card-back";
 import CardQr from "./components/card-qr";
 import { useCardIntro } from "./useCardIntro";
 import { useCardFlip } from "./useCardFlip";
+import { haptics } from "@/lib/haptics";
 
 const TILT_MAX = 9;
 const FACE_HIDDEN_ANGLE = 90;
@@ -30,6 +31,7 @@ export default function Card() {
   const springQrSpin = useSpring(qrSpin, QR_SPIN_SPRING);
 
   const handleQrFlip = () => {
+    haptics.quick();
     pendingQr.current = !showQr;
     qrSpin.set(qrSpin.get() + 360);
   };
