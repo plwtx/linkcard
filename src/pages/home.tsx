@@ -2,7 +2,7 @@ import Card from "@/features/Card";
 import Art from "@/features/Art";
 import Footer from "@/features/General/Footer";
 import AppLinks from "@/features/General/AppLinks";
-import tile from "@/assets/images/bg_tile.png";
+import tile from "@/assets/images/bg_tile.webp";
 
 export default function Home() {
   return (

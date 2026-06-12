@@ -1,9 +1,5 @@
-@import "@fontsource/ibm-plex-mono/latin-400.css";
 @import "@fontsource/inter/latin-300.css";
-@import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
-@import "@fontsource/inter/latin-600.css";
-@import "@fontsource/inter/latin-800.css";
 @import "tailwindcss";
 @plugin "@toolwind/corner-shape";
 
@@ -25,4 +21,36 @@
 /* FIXED: Accent color with fallback color. */
 @theme inline {
   --color-accent: var(--accent, #c4e24a);
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: rotate(18deg) scale(1.12);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(-12deg) scale(0.96);
+    opacity: 0.85;
+  }
+  75% {
+    transform: rotate(8deg) scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+@layer components {
+  .blur-blob {
+    animation: blob-drift var(--blob-duration, 6s) ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blur-blob {
+      animation: none;
+    }
+  }
 }

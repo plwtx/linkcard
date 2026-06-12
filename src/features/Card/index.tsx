@@ -13,15 +13,35 @@ import { useCardIntro } from "./useCardIntro";
 import { useCardFlip } from "./useCardFlip";
 import { useDeviceTilt } from "./useDeviceTilt";
 import { haptics } from "@/lib/haptics";
+import { preloadImage } from "@/lib/preloadImage";
+import { frontAssetsReady } from "./components/card-front/assets";
+import BackBG from "@/assets/images/card-back.webp";
+import QrBG from "@/assets/images/card-qr.webp";
 
 const TILT_MAX = 9;
 const FACE_HIDDEN_ANGLE = 90;
 const QR_SPIN_SPRING = { stiffness: 55, damping: 16 };
+const WARM_FALLBACK_MS = 4000;
 
 export default function Card() {
   const [frontFacing, setFrontFacing] = useState(true);
   const [showQr, setShowQr] = useState(false);
+  const [backBgSrc, setBackBgSrc] = useState<string>();
   const pendingQr = useRef<boolean | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    const fallback = new Promise((r) => setTimeout(r, WARM_FALLBACK_MS));
+    Promise.race([frontAssetsReady, fallback])
+      .then(() => preloadImage(BackBG))
+      .then(() => {
+        if (active) setBackBgSrc(BackBG);
+        return preloadImage(QrBG);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -99,7 +119,7 @@ export default function Card() {
             isActive={frontFacing && !showQr}
             onQrPress={handleQrFlip}
           />
-          <CardBack />
+          <CardBack bgSrc={backBgSrc} />
           {showQr && <CardQr isActive={frontFacing} />}
         </motion.div>
       </div>
