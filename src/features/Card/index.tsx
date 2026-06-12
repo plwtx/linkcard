@@ -11,6 +11,7 @@ import CardBack from "./components/card-back";
 import CardQr from "./components/card-qr";
 import { useCardIntro } from "./useCardIntro";
 import { useCardFlip } from "./useCardFlip";
+import { useDeviceTilt } from "./useDeviceTilt";
 import { haptics } from "@/lib/haptics";
 
 const TILT_MAX = 9;
@@ -42,6 +43,13 @@ export default function Card() {
       return true;
     }
     return false;
+  });
+
+  useDeviceTilt({
+    tiltX,
+    tiltY,
+    maxTilt: TILT_MAX,
+    isEnabled: () => !flip.isDragging(),
   });
 
   const { introFlip, entrance } = useCardIntro();
