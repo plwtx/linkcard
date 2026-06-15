@@ -2,6 +2,7 @@ import Card from "@/features/Card";
 import Art from "@/features/Art";
 import Footer from "@/features/General/Footer";
 import AppLinks from "@/features/General/AppLinks";
+import BackgroundTiles from "@/features/Background";
 import tile from "@/assets/images/bg_tile.webp";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         style={{ backgroundImage: `url(${tile})` }}
         className="2xs:px-6 selection:bg-accent relative flex h-dvh w-full flex-col items-center justify-center overflow-clip bg-repeat px-3 selection:text-white"
       >
+        <BackgroundTiles />
         <Card />
         <Footer />
         <AppLinks />

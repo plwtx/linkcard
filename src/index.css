@@ -43,13 +43,34 @@
   }
 }
 
+@keyframes tile-flip-in {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
 @layer components {
   .blur-blob {
     animation: blob-drift var(--blob-duration, 6s) ease-in-out infinite;
   }
 
+  .bg-tile-cell {
+    background-image: var(--tile-src);
+    background-size: 99px 99px;
+    transform-origin: left center;
+    backface-visibility: hidden;
+    animation: tile-flip-in var(--tile-dur, 0.34s)
+      cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .blur-blob {
+    .blur-blob,
+    .bg-tile-cell {
       animation: none;
     }
   }
