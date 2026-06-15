@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
 import { htmlMetaPlugin } from "./vite/html-meta";
+import { webmanifestPlugin } from "./vite/webmanifest";
 
 dns.setDefaultResultOrder("verbatim");
 
@@ -18,6 +19,7 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] }),
     htmlMetaPlugin(),
+    webmanifestPlugin(),
   ],
   server: {
     port: 3333,
