@@ -25,11 +25,11 @@ export function LinkTile({
     <a
       href={link.url}
       onClick={handleClick}
-      className="flex flex-col items-center justify-center space-y-1"
+      className="3xs:p-3 group z-99 flex flex-col items-center justify-center space-y-1 p-1"
     >
       <div
         ref={iconRef}
-        className="bg-blax 3xs:size-16 flex cursor-pointer items-center justify-center overflow-clip rounded-[18px] shadow-md shadow-black transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
+        className="bg-blax 3xs:size-16 flex cursor-pointer items-center justify-center overflow-clip rounded-[18px] shadow-md shadow-black transition-all duration-300 ease-in-out group-hover:scale-105 group-active:scale-95"
       >
         {link.iconSrc ? (
           <img

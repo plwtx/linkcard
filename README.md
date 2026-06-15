@@ -2,9 +2,7 @@
 
 A self-hostable, mobile-first "link in bio" page styled as a flippable card. It shows your username, a short bio, a set of links as apps, a side that flips to reveal a sharable QR code, and a portfolio link in the footer. Think of it as a personal alternative to Linktree that you own and host yourself.
 
-> **Live demo:** https://**REPLACE_WITH_YOUR_URL**
->
-> <!-- Replace the line above with your deployed URL. -->
+> <!-- **Live demo:** https://**ILL ADD THIS ONCE I HAVE DOMAIN**-->
 
 ## Features
 
@@ -15,18 +13,13 @@ A self-hostable, mobile-first "link in bio" page styled as a flippable card. It 
 - Two built in icon styles for link tiles (`default` and `1bit`) (I will add more in future ( ᵔ ⩊ ᵔ ) ).
 - All page content lives in a single JSON file, so no code changes are needed for normal edits.
 - Page title, description, theme color, and link preview tags (Open Graph and Twitter) are generated automatically from your config at build time.
-- Blocks AI bots, crawlers and scrapers\*
+- Blocks **AI bots, crawlers and scrapers**\*
 
 ```
-* I have added blockers to the access rules which blocks major scrapers, bots,
-and forces compliant crawlers to obey them. However some people / crawlers /
-etc., can dissmiss this warning and proceed with bots to scrape
-and use page data.
-
-Basically I can partially block big crawlers like Google, Bing, Yandex, GPTBot,
-ClaudeBot etc., but I can't block niche ones or the ones that do not respect
-this choice. For me to prevent these I would need server-side enforcement
-at host level, which is outside of this static project.
+* Blocks major crawlers (Google, Bing, GPTBot, ClaudeBot, etc.),
+but only those that choose to respect it. Non-compliant or niche bots can
+ignore it entirely. Full enforcement requires server-level controls, which
+aren't available in a static project like this one.
 ```
 
 ## Tech stack
