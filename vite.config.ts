@@ -5,6 +5,8 @@ import dns from "node:dns";
 import path from "path";
 import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
+import { htmlMetaPlugin } from "./vite/html-meta";
+import { webmanifestPlugin } from "./vite/webmanifest";
 
 dns.setDefaultResultOrder("verbatim");
 
@@ -12,7 +14,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  plugins: [tailwindcss(), react(), babel({ presets: [reactCompilerPreset()] })],
+  plugins: [
+    tailwindcss(),
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    htmlMetaPlugin(),
+    webmanifestPlugin(),
+  ],
   server: {
     port: 3333,
     host: true,

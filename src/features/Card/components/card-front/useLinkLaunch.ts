@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ResolvedLink } from "@/assets/types/config";
+import { haptics } from "@/lib/haptics";
 
 export const LAUNCH_DURATION_MS = 600;
 
@@ -14,6 +15,7 @@ export function useLinkLaunch() {
 
   const startLaunch = (link: ResolvedLink, rect: DOMRect) => {
     if (timer.current !== null) return;
+    haptics.long();
     setLaunch({ link, rect });
     timer.current = window.setTimeout(() => {
       window.location.href = link.url;

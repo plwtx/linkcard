@@ -1,0 +1,326 @@
+# ============================================================================
+#  robots.txt — total lockdown
+#
+#  This site is NOT to be indexed, archived, scraped, or used as training data.
+#  Default policy is deny-all for every crawler. The explicit blocks below name
+#  known AI-training, image, and scraper bots — many only honor rules listed
+#  under their own user-agent, so they are spelled out individually as well.
+#
+#  Note: robots.txt is advisory. Compliant crawlers obey it; malicious ones do
+#  not. The <meta name="robots"> tag in index.html reinforces this for engines.
+# ============================================================================
+
+# ---------------------------------------------------------------------------
+#  Catch-all: block every crawler from everything.
+# ---------------------------------------------------------------------------
+User-agent: *
+Disallow: /
+
+# ---------------------------------------------------------------------------
+#  General search engine indexers (explicit deny — no discoverability).
+# ---------------------------------------------------------------------------
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: Googlebot-News
+Disallow: /
+
+User-agent: Googlebot-Video
+Disallow: /
+
+User-agent: Storebot-Google
+Disallow: /
+
+User-agent: GoogleOther
+Disallow: /
+
+User-agent: GoogleOther-Image
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: msnbot
+Disallow: /
+
+User-agent: msnbot-media
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: YandexImages
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ---------------------------------------------------------------------------
+#  AI / LLM training & assistant crawlers.
+# ---------------------------------------------------------------------------
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Google-CloudVertexBot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: bedrockbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: meta-externalfetcher
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ByteDance
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: MistralAI-User
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dotbot
+Disallow: /
+
+User-agent: DuckAssistBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: FriendlyCrawler
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: PanguBot
+Disallow: /
+
+User-agent: SBIntuitionsBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: FirecrawlAgent
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: iaskspider/2.0
+Disallow: /
+
+User-agent: ICC-Crawler
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: Cotoyogi
+Disallow: /
+
+User-agent: Crawlspace
+Disallow: /
+
+User-agent: ProRataInc
+Disallow: /
+
+User-agent: QualifiedBot
+Disallow: /
+
+User-agent: Brightbot 1.0
+Disallow: /
+
+User-agent: NovaAct
+Disallow: /
+
+User-agent: Operator
+Disallow: /
+
+User-agent: Devin
+Disallow: /
+
+# ---------------------------------------------------------------------------
+#  SEO / commercial scrapers & data-harvesting crawlers.
+# ---------------------------------------------------------------------------
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: rogerbot
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: peer39_crawler
+Disallow: /
+
+User-agent: peer39_crawler/1.0
+Disallow: /
+
+User-agent: Awario
+Disallow: /
+
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: Sidetrade indexer bot
+Disallow: /
+
+User-agent: Echobot
+Disallow: /
+
+User-agent: Factset_spyderbot
+Disallow: /
+
+User-agent: LinerBot
+Disallow: /
+
+# ---------------------------------------------------------------------------
+#  Generic download / mirroring tools.
+# ---------------------------------------------------------------------------
+User-agent: wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: WebReaper
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /

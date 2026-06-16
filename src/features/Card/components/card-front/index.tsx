@@ -1,19 +1,11 @@
 import { AnimatePresence, motion } from "motion/react";
 import { config } from "@/config";
-import { resolveLinkIcon } from "@/assets/types/linkImages";
-import type { ResolvedLink } from "@/assets/types/config";
-import FrontBG from "@/assets/private/front3.png";
+import { FrontBG, frontAssetsReady, links } from "./assets";
 import { QrButton } from "./qr-button";
 import { Profile } from "./profile";
 import { LinksGrid } from "./links-grid";
 import { CardFrontSkeleton } from "./skeleton";
-import { useMinLoading } from "./useMinLoading";
-
-const links: ResolvedLink[] = config.links.map((link) => ({
-  label: link.label,
-  url: link.url,
-  iconSrc: resolveLinkIcon(link.label, config.linkStyle),
-}));
+import { useAssetsReady } from "./useAssetsReady";
 
 const LAYER =
   "absolute inset-0 flex flex-col items-center justify-between px-3 py-6";
@@ -26,7 +18,7 @@ export default function CardFront({
   isActive: boolean;
   onQrPress: () => void;
 }) {
-  const loading = useMinLoading(1000);
+  const loading = useAssetsReady(frontAssetsReady);
 
   return (
     <div

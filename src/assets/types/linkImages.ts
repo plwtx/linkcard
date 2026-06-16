@@ -1,18 +1,15 @@
-import instagram from "@/assets/icons/default/instagram.jpg";
-import bluesky from "@/assets/icons/default/bluesky.jpg";
-import kofi from "@/assets/icons/default/ko-fi.jpg";
-import tiktok from "@/assets/icons/default/tiktok.jpg";
-import vgen from "@/assets/icons/default/vgen.jpg";
-import youtube from "@/assets/icons/default/youtube.jpg";
+const ICON_MODULES = import.meta.glob<string>("@/assets/icons/*/*.webp", {
+  eager: true,
+  import: "default",
+  query: "?no-inline",
+});
 
-export const LINK_IMAGES: Record<string, string> = {
-  "instagram:default": instagram,
-  "bluesky:default": bluesky,
-  "ko-fi:default": kofi,
-  "tiktok:default": tiktok,
-  "vgen:default": vgen,
-  "youtube:default": youtube,
-};
+export const LINK_IMAGES: Record<string, string> = Object.fromEntries(
+  Object.entries(ICON_MODULES).flatMap(([path, src]) => {
+    const match = path.match(/icons\/([^/]+)\/([^/]+)\.webp$/);
+    return match ? [[`${match[2]}:${match[1]}`, src]] : [];
+  }),
+);
 
 export function resolveLinkIcon(
   label: string | undefined,

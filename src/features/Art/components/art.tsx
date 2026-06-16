@@ -10,7 +10,6 @@ interface Props {
   imgClassName: string;
 }
 
-/** Distance (px) off screen prior to slide animation. */
 const ENTER_DISTANCE = 160;
 const ENTER_TRANSITION = {
   duration: 0.85,

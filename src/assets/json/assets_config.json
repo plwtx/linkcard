@@ -1,0 +1,46 @@
+{
+  "card": {
+    "front": "card-front.webp",
+    "back": "card-back.webp",
+    "qr": "card-qr.webp"
+  },
+  "profilePicture": "profile-picture.webp",
+  "art": {
+    "left": "left-art.webp",
+    "right": "right-art.webp"
+  },
+  "background": {
+    "tile": "bg_tile.webp",
+    "tilePx": 99
+  },
+  "favicon": {
+    "links": [
+      { "rel": "icon", "href": "/favicon.ico", "sizes": "any" },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png"
+      },
+      { "rel": "apple-touch-icon", "href": "/apple-touch-icon.png" }
+    ],
+    "manifestIcons": [
+      {
+        "src": "/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+}

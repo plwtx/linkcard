@@ -1,36 +1,36 @@
 {
-  "username": "bygretya",
-  "description": "Artist & illustrator | commissions open.",
-  "accentColor": "#4c1d95",
-  "linkStyle": "default",
+  "username": "plwtx",
+  "description": "Hey ! This is an example page of how ;linkcard looks like (─‿‿─)",
+  "accentColor": "#252525",
+  "linkStyle": "1bit",
   "website": {
-    "label": "0w0.lt",
-    "url": "https://0w0.lt/"
+    "label": ";linkcard",
+    "url": "https://github.com/plwtx/linkcard"
   },
   "links": [
     {
       "label": "Instagram",
-      "url": "https://www.instagram.com/bygretya"
+      "url": "https://www.instagram.com/"
     },
     {
       "label": "TikTok",
-      "url": "https://www.tiktok.com/@bygretya"
+      "url": "https://www.tiktok.com/"
     },
     {
       "label": "YouTube",
-      "url": "https://youtube.com/channel/UCPrymZrgurBtWCkQXj47mXQ"
+      "url": "https://youtube.com/"
     },
     {
       "label": "Bluesky",
-      "url": "https://bsky.app/profile/bygretya.bsky.social"
+      "url": "https://bsky.app/"
     },
     {
       "label": "Vgen",
-      "url": "https://vgen.co/bygretya"
+      "url": "https://vgen.co/"
     },
     {
       "label": "Ko-Fi",
-      "url": "https://ko-fi.com/bygretya/commissions"
+      "url": "https://ko-fi.com/"
     }
   ]
 }
