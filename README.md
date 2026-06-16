@@ -47,7 +47,7 @@ Everything you normally change lives in [`src/assets/json/config.json`](src/asse
 
 ```json
 {
-  "username": "bygretya",
+  "username": "plwtx",
   "description": "Artist & illustrator | commissions open.",
   "accentColor": "#4c1d95",
   "linkStyle": "default",
@@ -56,8 +56,8 @@ Everything you normally change lives in [`src/assets/json/config.json`](src/asse
     "url": "https://0w0.lt/"
   },
   "links": [
-    { "label": "Instagram", "url": "https://www.instagram.com/bygretya" },
-    { "label": "Ko-Fi", "url": "https://ko-fi.com/bygretya/commissions" }
+    { "label": "Instagram", "url": "https://www.instagram.com/plwtx" },
+    { "label": "Ko-Fi", "url": "https://ko-fi.com/plwtx/commissions" }
   ]
 }
 ```
