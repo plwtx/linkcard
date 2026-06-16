@@ -10,7 +10,7 @@ export default function Footer() {
       {website && (
         <>
           <p className="z-40 flex max-w-60 flex-col items-center justify-center py-3 text-center text-xs">
-            You can check my portfolio at:
+            You can check more at:
             <a
               href={website.url}
               className="flex items-center gap-1 pt-1 text-center font-semibold tracking-widest underline"

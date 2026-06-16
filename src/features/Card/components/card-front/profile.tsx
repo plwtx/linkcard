@@ -21,7 +21,7 @@ export function Profile({
       </h1>
       {/* Bio / Description */}
       {description && (
-        <p className="font-inter max-w-60 text-center text-xs font-medium text-zinc-100">
+        <p className="font-inter -mb-6 max-w-60 text-center text-xs text-zinc-100">
           {description}
         </p>
       )}
