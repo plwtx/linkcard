@@ -8,7 +8,7 @@ import { haptics } from "@/lib/haptics";
 
 const FLIP_SPRING = { type: "spring" as const, stiffness: 90, damping: 18 };
 const HALF_TURN = 180;
-const TAP_MAX_DRIFT = 8;
+const TAP_MAX_DRIFT = 16;
 const FLING_PROJECTION = 0.18;
 
 export type FlipSide = -1 | 1;

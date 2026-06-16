@@ -1,8 +1,11 @@
 import type { Plugin } from "vite";
 import type { SiteConfig } from "../src/assets/types/config";
+import type { AssetsConfig } from "../src/assets/types/assets";
 import rawConfig from "../src/assets/json/config.json";
+import rawAssets from "../src/assets/json/assets_config.json";
 
 const parsed = rawConfig as Partial<SiteConfig>;
+const { favicon } = rawAssets as AssetsConfig;
 
 const SITE_NAME = ";linkcard";
 const BACKGROUND_COLOR = "#252525"; // blax
@@ -18,18 +21,7 @@ function buildManifest(): string {
     {
       name: SITE_NAME,
       short_name: SITE_NAME,
-      icons: [
-        {
-          src: "/android-chrome-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          src: "/android-chrome-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-      ],
+      icons: favicon.manifestIcons,
       theme_color: accentColor,
       background_color: BACKGROUND_COLOR,
       display: "standalone",

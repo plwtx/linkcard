@@ -3,13 +3,13 @@ import Art from "@/features/Art";
 import Footer from "@/features/General/Footer";
 import AppLinks from "@/features/General/AppLinks";
 import BackgroundTiles from "@/features/Background";
-import tile from "@/assets/images/bg_tile.webp";
+import { assets } from "@/assets/assets";
 
 export default function Home() {
   return (
     <>
       <div
-        style={{ backgroundImage: `url(${tile})` }}
+        style={{ backgroundImage: `url(${assets.background.tile})` }}
         className="2xs:px-6 selection:bg-accent relative flex h-dvh w-full flex-col items-center justify-center overflow-clip bg-repeat px-3 selection:text-white"
       >
         <BackgroundTiles />

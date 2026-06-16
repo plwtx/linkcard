@@ -15,8 +15,7 @@ import { useDeviceTilt } from "./useDeviceTilt";
 import { haptics } from "@/lib/haptics";
 import { preloadImage } from "@/lib/preloadImage";
 import { frontAssetsReady } from "./components/card-front/assets";
-import BackBG from "@/assets/images/card-back.webp";
-import QrBG from "@/assets/images/card-qr.webp";
+import { assets } from "@/assets/assets";
 
 const TILT_MAX = 9;
 const FACE_HIDDEN_ANGLE = 90;
@@ -33,10 +32,10 @@ export default function Card() {
     let active = true;
     const fallback = new Promise((r) => setTimeout(r, WARM_FALLBACK_MS));
     Promise.race([frontAssetsReady, fallback])
-      .then(() => preloadImage(BackBG))
+      .then(() => preloadImage(assets.card.back))
       .then(() => {
-        if (active) setBackBgSrc(BackBG);
-        return preloadImage(QrBG);
+        if (active) setBackBgSrc(assets.card.back);
+        return preloadImage(assets.card.qr);
       });
     return () => {
       active = false;

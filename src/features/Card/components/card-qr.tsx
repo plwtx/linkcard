@@ -1,6 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import { QRCode } from "react-qr-code";
-import BackBG from "@/assets/images/card-qr.webp";
+import { assets } from "@/assets/assets";
 
 // QR: linkcard page itself. (SELF SHARE)
 const QR_VALUE = typeof window !== "undefined" ? window.location.href : "";
@@ -41,7 +41,7 @@ export default function CardQr({ isActive }: { isActive: boolean }) {
   return (
     <div
       style={{
-        backgroundImage: `url(${BackBG})`,
+        backgroundImage: `url(${assets.card.qr})`,
       }}
       className={`absolute inset-0 z-50 flex flex-col items-center justify-center overflow-clip rounded-4xl border border-white bg-zinc-100 bg-cover bg-center shadow-lg shadow-black backface-hidden ${isActive ? "" : "pointer-events-none"}`}
     >

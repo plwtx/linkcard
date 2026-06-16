@@ -1,8 +1,11 @@
 import type { HtmlTagDescriptor, Plugin } from "vite";
 import type { SiteConfig } from "../src/assets/types/config";
+import type { AssetsConfig, FaviconLink } from "../src/assets/types/assets";
 import rawConfig from "../src/assets/json/config.json";
+import rawAssets from "../src/assets/json/assets_config.json";
 
 const parsed = rawConfig as Partial<SiteConfig>;
+const { favicon } = rawAssets as AssetsConfig;
 
 const username = parsed.username ?? "";
 const description = parsed.description ?? "";
@@ -21,10 +24,16 @@ function meta(attrs: Record<string, string>): HtmlTagDescriptor {
   return { tag: "meta", attrs, injectTo: "head" };
 }
 
+function link(attrs: FaviconLink): HtmlTagDescriptor {
+  return { tag: "link", attrs: { ...attrs }, injectTo: "head" };
+}
+
 export function htmlMetaPlugin(): Plugin {
   const title = username ? `${SITE_NAME} - @${username}` : SITE_NAME;
 
-  const tags: HtmlTagDescriptor[] = [
+  const faviconTags: HtmlTagDescriptor[] = favicon.links.map(link);
+
+  const metaTags: HtmlTagDescriptor[] = [
     // General discovery:
     meta({ name: "description", content: description }),
     meta({ name: "application-name", content: SITE_NAME }),
@@ -46,6 +55,8 @@ export function htmlMetaPlugin(): Plugin {
     meta({ name: "twitter:title", content: title }),
     meta({ name: "twitter:description", content: description }),
   ].filter((tag) => tag.attrs?.content);
+
+  const tags = [...faviconTags, ...metaTags];
 
   return {
     name: "linkcard:html-meta",

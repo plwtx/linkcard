@@ -1,4 +1,4 @@
-import tile from "@/assets/images/bg_tile.webp";
+import { assets } from "@/assets/assets";
 import { TILE_PX, STEP_S, FLIP_DURATION_S } from "./config";
 
 export function TileGrid({ cols, rows }: { cols: number; rows: number }) {
@@ -24,7 +24,7 @@ export function TileGrid({ cols, rows }: { cols: number; rows: number }) {
           gridTemplateColumns: `repeat(${cols}, ${TILE_PX}px)`,
           gridAutoRows: `${TILE_PX}px`,
           perspective: "700px",
-          "--tile-src": `url(${tile})`,
+          "--tile-src": `url(${assets.background.tile})`,
           "--tile-dur": `${FLIP_DURATION_S}s`,
         } as React.CSSProperties
       }

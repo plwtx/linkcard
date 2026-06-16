@@ -1,4 +1,4 @@
-import Drawing from "@/assets/images/left-art.webp";
+import { assets } from "@/assets/assets";
 import Art from "./art";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 export default function LeftArt({ seed }: Props) {
   return (
     <Art
-      src={Drawing}
+      src={assets.art.left}
       alt="Left decorative drawing."
       seed={seed}
       from="top"

@@ -1,4 +1,4 @@
-import pfp from "@/assets/images/profile-picture.webp";
+import { assets } from "@/assets/assets";
 
 export function Profile({
   username,
@@ -11,7 +11,7 @@ export function Profile({
     <section className="z-20 flex w-full flex-col items-center justify-center gap-1">
       {/* Profile picture */}
       <div
-        style={{ backgroundImage: `url(${pfp})` }}
+        style={{ backgroundImage: `url(${assets.profilePicture})` }}
         className="bg-blax shadow-blax h-35 w-35 rounded-full border border-zinc-400 bg-cover bg-center shadow-md"
       />
       {/* Username */}

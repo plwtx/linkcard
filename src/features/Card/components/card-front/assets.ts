@@ -2,10 +2,9 @@ import { config } from "@/config";
 import { resolveLinkIcon } from "@/assets/types/linkImages";
 import type { ResolvedLink } from "@/assets/types/config";
 import { preloadImages } from "@/lib/preloadImage";
-import FrontBG from "@/assets/images/card-front.webp";
-import pfp from "@/assets/images/profile-picture.webp";
+import { assets } from "@/assets/assets";
 
-export { FrontBG };
+export const FrontBG = assets.card.front;
 
 export const links: ResolvedLink[] = config.links.map((link) => ({
   label: link.label,
@@ -15,6 +14,6 @@ export const links: ResolvedLink[] = config.links.map((link) => ({
 
 export const frontAssetsReady = preloadImages([
   FrontBG,
-  pfp,
+  assets.profilePicture,
   ...links.map((link) => link.iconSrc),
 ]);
