@@ -1,8 +1,8 @@
 {
-  "username": "plwtx",
+  "username": "username",
   "description": "Hey ! This is an example page of how ;linkcard looks like (─‿‿─)",
   "accentColor": "#252525",
-  "linkStyle": "1bit",
+  "linkStyle": "default",
   "website": {
     "label": ";linkcard",
     "url": "https://github.com/plwtx/linkcard"
