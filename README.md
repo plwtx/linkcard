@@ -1,3 +1,5 @@
+![Chaidoro](docs/banner.webp)
+
 # ;linkcard
 
 A self-hostable, mobile-first "link in bio" page styled as a flippable card. It shows your username, a short bio, a set of links as apps, a side that flips to reveal a sharable QR code, and a portfolio link in the footer. Think of it as a personal alternative to Linktree that you own and host yourself.
