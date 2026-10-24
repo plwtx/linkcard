@@ -1,28 +1,22 @@
 import type { Plugin } from "vite";
-import type { SiteConfig } from "../src/assets/types/config";
-import type { AssetsConfig } from "../src/assets/types/assets";
-import rawConfig from "../src/assets/json/config.json";
+import type { AssetsConfig } from "../src/types/assets";
 import rawAssets from "../src/assets/json/assets_config.json";
+import { config, SITE_NAME } from "../src/config/site";
 
-const parsed = rawConfig as Partial<SiteConfig>;
 const { favicon } = rawAssets as AssetsConfig;
 
-const SITE_NAME = ";linkcard";
 const BACKGROUND_COLOR = "#252525"; // blax
-const DEFAULT_ACCENT = "#4c1d95";
 
 const MANIFEST_FILE = "site.webmanifest";
 const MANIFEST_PATH = `/${MANIFEST_FILE}`;
 
 function buildManifest(): string {
-  const accentColor = parsed.accentColor ?? DEFAULT_ACCENT;
-
   return JSON.stringify(
     {
       name: SITE_NAME,
       short_name: SITE_NAME,
       icons: favicon.manifestIcons,
-      theme_color: accentColor,
+      theme_color: config.accentColor,
       background_color: BACKGROUND_COLOR,
       display: "standalone",
     },

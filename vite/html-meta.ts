@@ -1,17 +1,12 @@
 import type { HtmlTagDescriptor, Plugin } from "vite";
-import type { SiteConfig } from "../src/assets/types/config";
-import type { AssetsConfig, FaviconLink } from "../src/assets/types/assets";
-import rawConfig from "../src/assets/json/config.json";
+import type { AssetsConfig, FaviconLink } from "../src/types/assets";
 import rawAssets from "../src/assets/json/assets_config.json";
+import { config, SITE_NAME } from "../src/config/site";
 
-const parsed = rawConfig as Partial<SiteConfig>;
 const { favicon } = rawAssets as AssetsConfig;
 
-const username = parsed.username ?? "";
-const description = parsed.description ?? "";
-const accentColor = parsed.accentColor ?? "#4c1d95";
-
-const SITE_NAME = ";linkcard";
+const { username, accentColor } = config;
+const description = config.description ?? "";
 
 function escapeHtml(value: string): string {
   return value

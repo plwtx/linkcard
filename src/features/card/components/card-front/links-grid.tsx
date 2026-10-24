@@ -1,0 +1,24 @@
+import type { ResolvedLink } from "@/types/config";
+import { LinkTile } from "./link-tile";
+import { LinkLaunchOverlay } from "./link-launch-overlay";
+import { useLinkLaunch } from "./use-link-launch";
+
+export function LinksGrid({ links }: { links: ResolvedLink[] }) {
+  const { launch, startLaunch } = useLinkLaunch();
+
+  return (
+    <section className="z-20 flex h-fit w-full items-center justify-center pt-3">
+      <section className="2xs:grid-cols-4 grid grid-flow-row grid-cols-3">
+        {links.map((link, i) => (
+          <LinkTile
+            key={`${link.label}-${i}`}
+            link={link}
+            onLaunch={startLaunch}
+            disabled={launch !== null}
+          />
+        ))}
+      </section>
+      {launch && <LinkLaunchOverlay launch={launch} />}
+    </section>
+  );
+}
