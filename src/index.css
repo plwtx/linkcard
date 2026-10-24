@@ -61,7 +61,7 @@
 
   .bg-tile-cell {
     background-image: var(--tile-src);
-    background-size: 99px 99px;
+    background-size: var(--tile-px, 99px) var(--tile-px, 99px);
     transform-origin: left center;
     backface-visibility: hidden;
     animation: tile-flip-in var(--tile-dur, 0.34s)
